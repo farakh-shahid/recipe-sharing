@@ -1,0 +1,100 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+enum Category {
+  BREAKFAST
+  DESSERT
+  DINNER
+  LUNCH
+}
+
+type Comment {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateCommentInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateRecipeInput {
+  category: [Category!]
+  chefId: String!
+  cookingTime: Int!
+  description: String!
+  imageUrl: String
+  ingredients: [String!]
+  instructions: [String!]
+  likes: Int! = 0
+  nutritionalInfo: String
+  shares: Int! = 0
+  tags: [String!]
+  title: String!
+  videoUrl: String
+}
+
+input CreateUserInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Mutation {
+  createComment(createCommentInput: CreateCommentInput!): Comment!
+  createRecipe(createRecipeInput: CreateRecipeInput!): Recipe!
+  createUser(data: CreateUserInput!): User
+  deleteUser(id: String!): User
+  removeComment(id: Int!): Comment!
+  removeRecipe(id: Int!): Recipe!
+  updateComment(updateCommentInput: UpdateCommentInput!): Comment!
+  updateUser(data: UpdateUserInput!, id: String!): User
+}
+
+type Query {
+  comment(id: Int!): Comment!
+  comments: [Comment!]!
+  findAll: [User!]!
+  findOne(id: String!): User
+  recipe(id: Int!): Recipe!
+  recipes: [Recipe!]!
+}
+
+type Recipe {
+  category: [Category!]
+  cookingTime: Int!
+  description: String
+  id: String!
+  imageUrl: String
+  ingredients: [String!]!
+  instructions: [String!]!
+  likes: Int!
+  nutritionalInfo: JSON
+  tags: [String!]
+  title: String!
+  videoUrl: String
+}
+
+input UpdateCommentInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateUserInput {
+  email: String
+  name: String
+  password: String
+}
+
+type User {
+  email: String!
+  id: ID!
+  name: String!
+}
